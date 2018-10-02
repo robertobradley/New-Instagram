@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  Instagram
 //
-//  Created by user144731 on 9/27/18.
+//  Created by Roberto Bradley on 9/27/18.
 //  Copyright © 2018 user144731. All rights reserved.
 //
 
@@ -11,10 +11,10 @@ import Parse
 
 class LoginViewController: UIViewController {
 //--OUTLETS--//
+    
     @IBOutlet weak var usernameField: UITextField!
+    
     @IBOutlet weak var passwordField: UITextField!
-    
-    
     
 //--VARIABLES--//
     
