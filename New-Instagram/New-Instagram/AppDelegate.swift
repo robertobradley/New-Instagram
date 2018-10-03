@@ -27,12 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         )
         
-//        if PFUser.current() != nil {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            // view controller currently being set in Storyboard as default will be overridden
-//            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "mainPageViewController")
-//
-//        }
+        if PFUser.current() != nil {
+            print("logged in")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            // view controller currently being set in Storyboard as default will be overridden
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "mainNav")
+        
+        }
         
         
                // Override point for customization after application launch.
@@ -60,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
 
 
 }

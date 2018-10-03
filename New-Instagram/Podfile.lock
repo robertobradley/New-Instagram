@@ -4,19 +4,23 @@ PODS:
     - Parse/Core (= 1.17.1)
   - Parse/Core (1.17.1):
     - Bolts/Tasks (~> 1.9)
+  - Toucan (1.0.0)
 
 DEPENDENCIES:
   - Parse
+  - Toucan
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Bolts
     - Parse
+    - Toucan
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
+  Toucan: 61867fb10948c02e9804280a95eb183e98eac97a
 
-PODFILE CHECKSUM: f55c3a97a69365346fed413795f2ea30431811ba
+PODFILE CHECKSUM: 1d049873a0749f4c93bfd473d1a46a9100938db1
 
 COCOAPODS: 1.5.3
