@@ -8,7 +8,7 @@
 
 import UIKit
 
-class mapPhotoViewController: UIViewController {
+class mapPhotoViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Parse
 
 class mainPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.isNavigationBarHidden = false
         // Do any additional setup after loading the view.
     }
     
@@ -26,5 +27,14 @@ class mainPageViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func signOutButtonTapped(_ sender: Any) {
+        
+        PFUser.logOut()
+        var currentUser = PFUser.current()
+        self.performSegue(withIdentifier: "logOutSegue", sender: nil)    }
+    
+    @IBAction func onTakePhoto(_ sender: Any) {
+        self.performSegue(withIdentifier: "takePicture", sender: nil)
+    }
+    
 }

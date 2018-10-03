@@ -14,17 +14,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        
         
         Parse.initialize(
             with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
                 configuration.applicationId = "New-Instagram"
                 configuration.clientKey = "723F3541576DFFD829B1C1E0EA782F13972A9A63"  // set to nil assuming you have not set clientKey
                 configuration.server = "https://new-instagram.herokuapp.com/parse"
+                
             })
         )
-        // Override point for customization after application launch.
+        
+//        if PFUser.current() != nil {
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            // view controller currently being set in Storyboard as default will be overridden
+//            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "mainPageViewController")
+//
+//        }
+        
+        
+               // Override point for customization after application launch.
         return true
     }
 

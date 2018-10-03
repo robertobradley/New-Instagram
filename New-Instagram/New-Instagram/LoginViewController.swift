@@ -17,12 +17,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     
 //--VARIABLES--//
-    
+var currentUser = PFUser.current()
     
     
 //-------------Visual Break----------//
     override func viewDidLoad() {
         super.viewDidLoad()
+//        if currentUser != nil {
+//            // Do stuff with the user
+//            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+        //}
 
         // Do any additional setup after loading the view.
     }
@@ -51,11 +55,12 @@ class LoginViewController: UIViewController {
                     print("Username is already taken")
                 }
                 else{
-               self.performSegue(withIdentifier: "loginSegue", sender: nil)
+               
                 print(error.localizedDescription)
                 
                 }
             } else {
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 print("User Registered successfully")
                 // manually segue to logged in view
                 
