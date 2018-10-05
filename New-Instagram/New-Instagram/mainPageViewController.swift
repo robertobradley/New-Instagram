@@ -8,13 +8,32 @@
 
 import UIKit
 import Parse
+import ParseUI
 
-class mainPageViewController: UIViewController {
-
+class mainPageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+//   , UITableViewDataSource, UITableViewDelegate
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var posts : [Post] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = false
+       tableView.dataSource = self
+       tableView.delegate = self
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControl.Event.valueChanged)
+        // add refresh control to table view
+        tableView.insertSubview(refreshControl, at: 0)
         // Do any additional setup after loading the view.
+        self.tableView.reloadData()
+        fetchPosts()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 
@@ -30,11 +49,64 @@ class mainPageViewController: UIViewController {
     @IBAction func signOutButtonTapped(_ sender: Any) {
         
         PFUser.logOut()
-        var currentUser = PFUser.current()
         self.performSegue(withIdentifier: "logOutSegue", sender: nil)    }
     
     @IBAction func onTakePhoto(_ sender: Any) {
         self.performSegue(withIdentifier: "takePicture", sender: nil)
+    }
+    
+    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        fetchPosts()
+        // ... Use the new data to update the data source ...
+        // Reload the tableView now that there is new data
+        tableView.reloadData()
+        // Tell the refreshControl to stop spinning
+        refreshControl.endRefreshing()
+    }
+    
+    func fetchPosts()
+    {
+        let query = Post.query()
+        query?.order(byDescending: "createdAt")
+        query?.includeKey("author")
+        query?.limit = 20
+        
+        query?.findObjectsInBackground { (Post, error: Error?) -> Void in
+            if let posts = Post {
+                print("success fetch")
+                self.posts = posts as! [Post]
+                self.tableView.reloadData()
+            } else {
+                print("fetch failed")
+            }
+        }
+        
+     }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         return posts.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! PostCell
+        let post = posts[indexPath.row]
+        
+        let caption = post.caption
+        cell.postCaption.text = caption
+        
+        if let imageFile : PFFile = post.media {
+            imageFile.getDataInBackground(block: {(data, error) in
+                if error == nil {
+                    DispatchQueue.main.async {
+                        let image = UIImage(data: data!)
+                        cell.postImage.image = image
+                    }
+                } else{
+                    print(error!.localizedDescription)
+                }
+            })
+        }
+        return cell
+        
     }
     
 }

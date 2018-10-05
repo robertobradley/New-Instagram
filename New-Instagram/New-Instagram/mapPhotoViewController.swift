@@ -11,7 +11,8 @@ import Parse
 import Photos
 import Toucan
 
-class mapPhotoViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+class mapPhotoViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
 
     @IBOutlet weak var imagePost: UIImageView!
     
@@ -19,7 +20,6 @@ class mapPhotoViewController: UIViewController , UIImagePickerControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         vc.delegate = self
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedPhoto(tapGestureRecognizer:)))
@@ -32,9 +32,7 @@ class mapPhotoViewController: UIViewController , UIImagePickerControllerDelegate
     }
     
     @objc func tappedPhoto(tapGestureRecognizer: UITapGestureRecognizer){
-        print("here")
         imagePickerHelper()
-        print("here 2")
     }
      let vc = UIImagePickerController()
     
@@ -45,7 +43,6 @@ class mapPhotoViewController: UIViewController , UIImagePickerControllerDelegate
             PHPhotoLibrary.requestAuthorization({status in
                 if status == .authorized{
                 self.vc.allowsEditing = true
-                    print("got here 1")
                     if UIImagePickerController.isSourceTypeAvailable(.camera) {
                         print("Camera is available 📸")
                         self.vc.sourceType = .camera

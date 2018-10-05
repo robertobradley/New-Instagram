@@ -8,6 +8,8 @@ target 'New-Instagram' do
   # Pods for New-Instagram
     pod 'Parse'
     pod 'Toucan'
+    pod 'ParseUI'
+    
   target 'New-InstagramTests' do
     inherit! :search_paths
     # Pods for testing

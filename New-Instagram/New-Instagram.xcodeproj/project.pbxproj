@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10CAD5B9E8D481A5143C34EC /* Pods_New_InstagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AC1779E770C4157C6B3A217 /* Pods_New_InstagramTests.framework */; };
+		5A1673F42166FAB000BB93A9 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1673F32166FAB000BB93A9 /* PostCell.swift */; };
 		5A1D88FC2165283E003D6067 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D88FB2165283E003D6067 /* Post.swift */; };
 		5A8681AA2163348400E8E9CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A8681A82163348400E8E9CD /* Main.storyboard */; };
 		5A8681AC2163348500E8E9CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A8681AB2163348500E8E9CD /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		2ABB7F8010238FF0EE27775D /* Pods-New-InstagramTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-New-InstagramTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-New-InstagramTests/Pods-New-InstagramTests.release.xcconfig"; sourceTree = "<group>"; };
 		4FDBE80909F3C34B717178A5 /* Pods_New_Instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_New_Instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		504923E4A6EFD97808631533 /* Pods-New-InstagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-New-InstagramUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-New-InstagramUITests/Pods-New-InstagramUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5A1673F32166FAB000BB93A9 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		5A1D88FB2165283E003D6067 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		5A8681A12163348400E8E9CD /* New-Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "New-Instagram.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A8681A92163348400E8E9CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				5A8681B02163348500E8E9CD /* Info.plist */,
 				5A8681D22163377D00E8E9CD /* New-Instagram-Bridging-Header.h */,
 				5A1D88FB2165283E003D6067 /* Post.swift */,
+				5A1673F32166FAB000BB93A9 /* PostCell.swift */,
 			);
 			path = "New-Instagram";
 			sourceTree = "<group>";
@@ -335,12 +338,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-New-Instagram/Pods-New-Instagram-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
+				"${BUILT_PRODUCTS_DIR}/ParseUI/ParseUI.framework",
 				"${BUILT_PRODUCTS_DIR}/Toucan/Toucan.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ParseUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toucan.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +401,7 @@
 				5AE12AFE21643EBD0098BCC7 /* mapPhotoViewController.swift in Sources */,
 				5A9723732163E33A00E873F9 /* mainPageViewController.swift in Sources */,
 				5A1D88FC2165283E003D6067 /* Post.swift in Sources */,
+				5A1673F42166FAB000BB93A9 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,7 +578,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "New-Instagram/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -580,6 +588,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "rbradley.New-Instagram";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "New-Instagram/New-Instagram-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -593,7 +602,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "New-Instagram/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -601,6 +612,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "rbradley.New-Instagram";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "New-Instagram/New-Instagram-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
