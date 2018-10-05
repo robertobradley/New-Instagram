@@ -141,6 +141,7 @@
                                         <connections>
                                             <outlet property="postCaption" destination="aXX-Om-DGs" id="wWm-VO-5Ze"/>
                                             <outlet property="postImage" destination="NBg-Zh-uNg" id="jsq-vN-XPF"/>
+                                            <segue destination="gvH-TM-o4W" kind="show" identifier="DetailViewController" id="TMd-KF-Dnk"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -165,7 +166,6 @@
                         <outlet property="tableView" destination="GRK-wf-HMU" id="2Yx-2Q-DvO"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="logOutSegue" id="Tch-0j-31j"/>
                         <segue destination="cdA-8J-Wjh" kind="presentation" identifier="takePicture" id="UIW-1A-vdv"/>
-                        <segue destination="gvH-TM-o4W" kind="show" identifier="DetailViewController" id="bGk-Gp-3P7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Psb-7M-hpI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -312,6 +312,7 @@
         <image name="insta_camera_btn" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="UIW-1A-vdv"/>
         <segue reference="XF3-vT-6Mg"/>
         <segue reference="l58-nE-dUI"/>
     </inferredMetricsTieBreakers>
