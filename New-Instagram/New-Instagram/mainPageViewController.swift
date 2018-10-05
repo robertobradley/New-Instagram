@@ -14,6 +14,7 @@ class mainPageViewController: UIViewController, UITableViewDataSource, UITableVi
 //   , UITableViewDataSource, UITableViewDelegate
     
     
+
     @IBOutlet weak var tableView: UITableView!
     
     var posts : [Post] = []
@@ -22,11 +23,14 @@ class mainPageViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
        tableView.dataSource = self
        tableView.delegate = self
+       
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControl.Event.valueChanged)
         // add refresh control to table view
-        tableView.insertSubview(refreshControl, at: 0)
-        // Do any additional setup after loading the view.
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableView.automaticDimension;      tableView.insertSubview(refreshControl, at: 0)
+         
+             // Do any additional setup after loading the view.
         self.tableView.reloadData()
         fetchPosts()
     }
@@ -35,6 +39,8 @@ class mainPageViewController: UIViewController, UITableViewDataSource, UITableVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*
@@ -106,6 +112,28 @@ class mainPageViewController: UIViewController, UITableViewDataSource, UITableVi
             })
         }
         return cell
+        
+    }
+    
+    func tableView(_tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(sender != nil) {
+            
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let post = posts[indexPath.row]
+                let detailViewController = segue.destination as! DetailViewController
+                detailViewController.post = post
+                
+                let postCell = sender as! PostCell
+                detailViewController.postImage = postCell.postImage.image!
+            }
+        }
+        
         
     }
     
